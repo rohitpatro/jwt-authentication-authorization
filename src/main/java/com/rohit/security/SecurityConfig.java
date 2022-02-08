@@ -40,8 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager());
         customAuthenticationFilter.setFilterProcessesUrl("/api/login"); // changing the default login filter
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers("/api/login/**").permitAll(); // It will allow without login
+        http.authorizeRequests().antMatchers("/h2-console/**").permitAll(); // It will allow without login
         http.authorizeRequests().antMatchers(HttpMethod.GET, "api/user/**").hasAnyAuthority(ROLE_USER);
         http.authorizeRequests().antMatchers(HttpMethod.POST, "api/user/save**").hasAnyAuthority(ROLE_ADMIN);
         http.authorizeRequests().anyRequest().authenticated();

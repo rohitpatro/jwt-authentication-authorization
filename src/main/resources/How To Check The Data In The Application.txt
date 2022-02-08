@@ -1,0 +1,14 @@
+Run The Application On The Port 8083
+
+Open Browser And Access The URL
+http://localhost:8083/h2-console/login.jsp
+
+
+Driver Class Name : org.h2.Driver
+JDBC URL : jdbc:h2:mem:testdb
+username : sa
+password : password
+
+
+
+If You Want To Use The MariaDB Then Comment The Dependency In pom.xml for h2 database
